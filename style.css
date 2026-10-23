@@ -1,0 +1,631 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap');
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+:root{
+    --pink:#ff5b9f;
+    --pink2:#ff9ac8;
+    --purple:#8d62f4;
+    --blue:#62d9ff;
+    --yellow:#ffd866;
+    --text:#51385b;
+    --white:#ffffff;
+}
+
+body{
+    font-family:'Baloo 2',cursive;
+    min-height:100vh;
+    color:var(--text);
+    overflow-x:hidden;
+
+    background:
+        radial-gradient(circle at 8% 15%,#ffd3e8 0 90px,transparent 91px),
+        radial-gradient(circle at 92% 12%,#d8c8ff 0 110px,transparent 111px),
+        radial-gradient(circle at 85% 85%,#c9f4ff 0 100px,transparent 101px),
+        linear-gradient(135deg,#fff6fb,#f6f0ff,#edfbff);
+}
+
+/* ================= CARGANDO ================= */
+
+#loading{
+    position:fixed;
+    inset:0;
+    z-index:9999;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    background:
+        radial-gradient(circle at 20% 20%,#ffd6eb,#ffffff 35%),
+        linear-gradient(135deg,#f5eaff,#eafaff);
+
+    transition:.7s;
+}
+
+#loading.hide{
+    opacity:0;
+    visibility:hidden;
+}
+
+.loading-title{
+    font-size:45px;
+    color:var(--pink);
+    font-weight:800;
+    text-shadow:2px 3px white, 5px 6px #bd3b78;
+}
+
+.loading-text{
+    font-size:18px;
+    color:#765176;
+}
+
+.spinner{
+    width:38px;
+    height:38px;
+    margin-top:15px;
+    border-radius:50%;
+    border:4px solid #ffd1e5;
+    border-top-color:var(--pink);
+    animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+    to{transform:rotate(360deg)}
+}
+
+/* ================= GRULLA (CORREGIDA Y PROPORCIONADA) ================= */
+
+.crane{
+    width:100%;
+    max-width:280px; /* Reducida para que no sea gigante */
+    height:auto;
+    animation:float 4s ease-in-out infinite;
+    filter:drop-shadow(0 15px 15px rgba(145,39,101,.2));
+}
+
+@keyframes float{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-12px);
+    }
+}
+
+/* ================= APP ================= */
+
+#app{
+    display:none;
+}
+
+#app.show{
+    display:block;
+}
+
+/* ================= HEADER ================= */
+
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index:1000;
+
+    padding:12px 25px;
+
+    background:rgba(255,255,255,.8);
+    backdrop-filter:blur(18px);
+
+    box-shadow:0 5px 25px rgba(120,60,120,.1);
+}
+
+.header-content{
+    max-width:1200px;
+    margin:auto;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+}
+
+.logo{
+    font-size:26px;
+    font-weight:800;
+    color:var(--pink);
+    white-space:nowrap;
+}
+
+.menu{
+    display:flex;
+    gap:6px;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+.menu button{
+    border:none;
+    background:transparent;
+
+    padding:8px 12px;
+    border-radius:20px;
+
+    color:var(--text);
+    font-family:inherit;
+    font-weight:700;
+    font-size:14px;
+
+    cursor:pointer;
+    transition:.25s;
+}
+
+.menu button:hover,
+.menu button.selected{
+    background:var(--pink);
+    color:white;
+    transform:translateY(-2px);
+}
+
+.theme{
+    border:none;
+    background:white;
+    border-radius:20px;
+    padding:8px 12px;
+    cursor:pointer;
+    font-size:16px;
+    box-shadow:0 4px 12px rgba(120,60,120,.1);
+}
+
+/* ================= PANTALLAS ================= */
+
+.screen{
+    display:none;
+    min-height:100vh;
+    padding:110px 5% 40px;
+
+    animation:appear .35s ease;
+}
+
+.screen.active{
+    display:block;
+}
+
+@keyframes appear{
+    from{
+        opacity:0;
+        transform:translateY(12px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* ================= INICIO ================= */
+
+#home{
+    min-height:100vh;
+    display:none;
+    align-items:center;
+    justify-content:center;
+}
+
+#home.active{
+    display:flex;
+}
+
+.home{
+    max-width:1100px;
+    width:100%;
+
+    display:grid;
+    grid-template-columns:1.2fr 0.8fr;
+    align-items:center;
+    gap:40px;
+}
+
+.home-text{
+    animation:appear .7s ease;
+}
+
+.badge{
+    display:inline-block;
+    padding:7px 16px;
+    border-radius:30px;
+    background:white;
+    color:var(--pink);
+    box-shadow:0 8px 20px rgba(120,60,120,.1);
+    font-weight:700;
+    font-size:14px;
+    margin-bottom:15px;
+}
+
+.home h1{
+    font-size:clamp(50px, 7vw, 90px);
+    line-height:.9;
+    color:var(--pink);
+    text-shadow:3px 4px white, 6px 7px #c13b78;
+}
+
+.home h1 span{
+    color:var(--purple);
+}
+
+.home p{
+    max-width:500px;
+    margin:20px 0;
+    font-size:18px;
+    line-height:1.4;
+}
+
+.buttons{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    border:none;
+    border-radius:30px;
+    padding:12px 22px;
+    font-family:inherit;
+    font-size:15px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.btn-main{
+    color:white;
+    background:linear-gradient(135deg,var(--pink),var(--purple));
+    box-shadow:0 10px 20px rgba(145,70,160,.2);
+}
+
+.btn-light{
+    background:white;
+    color:var(--pink);
+    box-shadow:0 10px 20px rgba(145,70,160,.1);
+}
+
+.btn:hover{
+    transform:translateY(-3px) scale(1.02);
+}
+
+/* ================= TITULOS ================= */
+
+.title{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.title h2{
+    font-size:42px;
+    line-height:1;
+    color:var(--pink);
+}
+
+.title p{
+    margin-top:6px;
+    font-size:16px;
+    opacity:.75;
+}
+
+/* ================= PRESENTACION ================= */
+
+.presentation{
+    max-width:1050px;
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    align-items:center;
+    gap:30px;
+}
+
+.presentation-crane{
+    min-height:380px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:35px;
+    background:
+        radial-gradient(circle,#ffbadb 0 8%,transparent 9%),
+        linear-gradient(145deg,#ffdced,#eee3ff,#dff8ff);
+    box-shadow:0 20px 40px rgba(140,70,140,.15);
+    overflow:hidden;
+    padding:20px;
+}
+
+.presentation-info{
+    padding:32px;
+    border-radius:35px;
+    background:rgba(255,255,255,.75);
+    backdrop-filter:blur(15px);
+    box-shadow:0 15px 40px rgba(130,65,130,.1);
+}
+
+.presentation-info h3{
+    font-size:32px;
+    color:var(--purple);
+    margin-bottom:12px;
+}
+
+.presentation-info p{
+    font-size:16px;
+    line-height:1.5;
+    margin-bottom:12px;
+}
+
+.little-boxes{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin-top:15px;
+}
+
+.little-box{
+    padding:12px;
+    border-radius:16px;
+    background:#fff;
+    font-weight:700;
+    font-size:14px;
+    box-shadow:0 4px 10px rgba(0,0,0,.03);
+}
+
+/* ================= NIVELES ================= */
+
+.levels{
+    max-width:1050px;
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+}
+
+.level{
+    min-height:220px;
+    padding:22px;
+    color:white;
+    border-radius:30px;
+    box-shadow:0 15px 30px rgba(90,50,100,.12);
+    transition:.3s;
+    cursor:pointer;
+}
+
+.level:hover{
+    transform:translateY(-8px) rotate(-1deg);
+}
+
+.level:nth-child(1){ background:linear-gradient(145deg,#63dcff,#608eff); }
+.level:nth-child(2){ background:linear-gradient(145deg,#ff9ac9,#ff5c9f); }
+.level:nth-child(3){ background:linear-gradient(145deg,#aa8cff,#7455d8); }
+.level:nth-child(4){ background:linear-gradient(145deg,#ffdc69,#ff9749); }
+
+.level-number{
+    font-size:45px;
+    font-weight:800;
+}
+
+.level h3{
+    font-size:24px;
+    margin-top:5px;
+}
+
+.level p {
+    font-size:14px;
+    opacity:0.9;
+    margin-top:5px;
+}
+
+/* ================= PROYECTO ================= */
+
+.project{
+    max-width:850px;
+    margin:auto;
+    padding:35px;
+    border-radius:35px;
+    background:rgba(255,255,255,.75);
+    backdrop-filter:blur(15px);
+    box-shadow:0 15px 40px rgba(120,60,130,.12);
+}
+
+.project h3{
+    font-size:32px;
+    color:var(--pink);
+    margin-bottom:12px;
+}
+
+.project p{
+    font-size:16px;
+    line-height:1.5;
+    margin-bottom:15px;
+}
+
+.project-list{
+    display:grid;
+    gap:10px;
+    margin:20px 0;
+}
+
+.project-list div{
+    padding:12px 16px;
+    border-radius:15px;
+    background:white;
+    font-weight:600;
+    font-size:15px;
+}
+
+/* ================= TUTORIALES ================= */
+
+.tutorial-grid{
+    max-width:1100px;
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.tutorial{
+    overflow:hidden;
+    border-radius:25px;
+    background:rgba(255,255,255,.8);
+    backdrop-filter:blur(12px);
+    box-shadow:0 12px 30px rgba(120,60,120,.1);
+    cursor:pointer;
+    transition:.3s;
+}
+
+.tutorial:hover{
+    transform:translateY(-6px);
+}
+
+.thumbnail{
+    height:160px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    font-size:65px;
+    background:
+        radial-gradient(circle at 20% 20%,white 0 6px,transparent 7px),
+        radial-gradient(circle at 80% 30%,white 0 5px,transparent 6px),
+        linear-gradient(135deg,#ffc7df,#d5c7ff,#a8edff);
+}
+
+.play{
+    position:absolute;
+    width:50px;
+    height:50px;
+    display:grid;
+    place-items:center;
+    border-radius:50%;
+    background:#ff5b9f;
+    color:white;
+    font-size:20px;
+    box-shadow:0 8px 20px rgba(120,40,100,.25);
+}
+
+.tutorial-info{
+    padding:18px;
+}
+
+.tutorial-info h3{
+    font-size:22px;
+    color:#704b89;
+}
+
+.tutorial-info p{
+    font-size:14px;
+    opacity:.7;
+}
+
+/* ================= VIDEO ================= */
+
+.video-page{
+    max-width:850px;
+    margin:auto;
+    text-align:center;
+}
+
+.video-container{
+    padding:20px;
+    border-radius:30px;
+    background:rgba(255,255,255,.8);
+    box-shadow:0 15px 40px rgba(120,60,120,.12);
+}
+
+.video-container video{
+    width:100%;
+    max-height:420px;
+    border-radius:18px;
+    background:#17131b;
+}
+
+.video-message{
+    padding:15px;
+    font-size:16px;
+}
+
+/* ================= BURBUJAS ================= */
+
+.bubble{
+    position:fixed;
+    z-index:-1;
+    border-radius:50%;
+    pointer-events:none;
+    animation:bubbleFloat 8s ease-in-out infinite;
+}
+
+.bubble.one{ width:40px; height:40px; left:4%; top:40%; background:#ff8fbd66; }
+.bubble.two{ width:60px; height:60px; right:5%; top:55%; background:#72dcff55; animation-delay:2s; }
+.bubble.three{ width:30px; height:30px; left:35%; bottom:8%; background:#ffd45c88; animation-delay:1s; }
+
+@keyframes bubbleFloat{
+    0%,100%{ transform:translateY(0); }
+    50%{ transform:translateY(-25px); }
+}
+
+/* ================= OSCURO ================= */
+
+body.dark{
+    color:white;
+    background:
+        radial-gradient(circle at 10% 15%,#44203f 0 90px,transparent 91px),
+        radial-gradient(circle at 90% 12%,#292254 0 110px,transparent 111px),
+        linear-gradient(135deg,#17121d,#21182b,#101b29);
+}
+
+body.dark header{ background:rgba(20,15,28,.8); }
+body.dark .menu button{ color:white; }
+body.dark .menu button:hover,
+body.dark .menu button.selected{ color:white; }
+
+body.dark .theme,
+body.dark .badge,
+body.dark .btn-light,
+body.dark .presentation-info,
+body.dark .project,
+body.dark .tutorial{
+    background:#2b2035;
+    color:white;
+}
+
+body.dark .little-box,
+body.dark .project-list div{
+    background:#392840;
+}
+
+body.dark .tutorial-info h3{
+    color:#ff9ccc;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:900px){
+    .header-content{ flex-direction:column; }
+    header{ position:relative; }
+    .home, .presentation{ grid-template-columns:1fr; }
+    .home{ text-align:center; }
+    .home p{ margin-left:auto; margin-right:auto; }
+    .buttons{ justify-content:center; }
+    .levels{ grid-template-columns:1fr 1fr; }
+    .tutorial-grid{ grid-template-columns:1fr 1fr; }
+    .presentation-crane{ min-height:300px; }
+}
+
+@media(max-width:600px){
+    .menu button{ font-size:12px; padding:6px 8px; }
+    .home h1{ font-size:45px; }
+    .levels, .tutorial-grid{ grid-template-columns:1fr; }
+    .title h2{ font-size:32px; }
+    .presentation-info{ padding:20px; }
+    .little-boxes{ grid-template-columns:1fr; }
+}
