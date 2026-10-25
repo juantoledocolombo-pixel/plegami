@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLEGAMI 🪽</title>
+    <!-- Enlace a la hoja de estilos externa -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- PANTALLA DE CARGA -->
+<div id="loading">
+    <svg class="crane" viewBox="0 0 700 560" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <linearGradient id="pinkA" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#ffd2e6"/>
+                <stop offset="45%" stop-color="#ff82b8"/>
+                <stop offset="100%" stop-color="#e92d84"/>
+            </linearGradient>
+            <linearGradient id="pinkB" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#ffb9d9"/>
+                <stop offset="100%" stop-color="#ff559f"/>
+            </linearGradient>
+        </defs>
+        <polygon points="40,120 315,310 245,430" fill="url(#pinkA)" stroke="#92175c" stroke-width="8"/>
+        <polygon points="40,120 315,310 150,260" fill="#ffb8d8" stroke="#92175c" stroke-width="6"/>
+        <polygon points="245,430 315,210 485,335 420,470" fill="url(#pinkB)" stroke="#92175c" stroke-width="8"/>
+        <polygon points="315,210 420,470 485,335" fill="#ff9dca" stroke="#92175c" stroke-width="6"/>
+        <polygon points="315,210 485,335 605,90 535,350" fill="url(#pinkA)" stroke="#92175c" stroke-width="8"/>
+        <polygon points="485,335 535,350 605,90" fill="#ff69ad" stroke="#92175c" stroke-width="6"/>
+        <polygon points="535,350 605,90 665,145 575,205" fill="#ed478f" stroke="#92175c" stroke-width="8"/>
+        <polygon points="605,90 665,145 625,150" fill="#ffd2e5" stroke="#92175c" stroke-width="5"/>
+        <polygon points="245,430 55,500 315,500" fill="#ff77b6" stroke="#92175c" stroke-width="8"/>
+        <line x1="315" y1="210" x2="420" y2="470" stroke="#a51b68" stroke-width="6"/>
+        <line x1="245" y1="430" x2="485" y2="335" stroke="#a51b68" stroke-width="6"/>
+        <ellipse cx="205" cy="255" rx="28" ry="11" fill="white" opacity=".8" transform="rotate(30 205 255)"/>
+        <ellipse cx="545" cy="190" rx="30" ry="11" fill="white" opacity=".75" transform="rotate(-65 545 190)"/>
+    </svg>
+    <div class="loading-title">PLEGAMI</div>
+    <div class="loading-text">Preparando tu mundo de origami...</div>
+    <div class="spinner"></div>
+</div>
+
+<!-- BURBUJAS -->
+<div class="bubble one"></div>
+<div class="bubble two"></div>
+<div class="bubble three"></div>
+
+<!-- APLICACIÓN -->
+<div id="app">
+
+<header>
+    <div class="header-content">
+        <div class="logo">🪽 PLEGAMI</div>
+        <div class="menu">
+            <button onclick="showScreen('home', this)" class="selected">🏠 Inicio</button>
+            <button onclick="showScreen('presentation', this)">💗 Presentación</button>
+            <button onclick="showScreen('levels', this)">⭐ Niveles</button>
+            <button onclick="showScreen('project', this)">📚 Proyecto</button>
+            <button onclick="showScreen('tutorials', this)">🎥 Tutoriales</button>
+        </div>
+        <button class="theme" onclick="toggleTheme()" id="themeButton">🌙</button>
+    </div>
+</header>
+
+<!-- INICIO -->
+<section id="home" class="screen active">
+    <div class="home">
+        <div class="home-text">
+            <span class="badge">✨ Aprende • Pliega • Crea</span>
+            <h1>PLE<span>GAMI</span></h1>
+            <p>Descubre el mundo del origami y convierte una simple hoja de papel en algo increíble.</p>
+            <div class="buttons">
+                <button class="btn btn-main" onclick="showScreen('tutorials')">🎥 Ver tutoriales</button>
+                <button class="btn btn-light" onclick="showScreen('levels')">⭐ Ver niveles</button>
+            </div>
+        </div>
+        <div style="text-align:center">
+            <svg class="crane" viewBox="0 0 700 560" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="40,120 315,310 245,430" fill="#ff79b5" stroke="#92175c" stroke-width="8"/>
+                <polygon points="40,120 315,310 150,260" fill="#ffb9d9" stroke="#92175c" stroke-width="6"/>
+                <polygon points="245,430 315,210 485,335 420,470" fill="#ff8fc4" stroke="#92175c" stroke-width="8"/>
+                <polygon points="315,210 420,470 485,335" fill="#ffb1d3" stroke="#92175c" stroke-width="6"/>
+                <polygon points="315,210 485,335 605,90 535,350" fill="#ff69ad" stroke="#92175c" stroke-width="8"/>
+                <polygon points="485,335 535,350 605,90" fill="#ff8bbe" stroke="#92175c" stroke-width="6"/>
+                <polygon points="535,350 605,90 665,145 575,205" fill="#ec438d" stroke="#92175c" stroke-width="8"/>
+                <polygon points="605,90 665,145 625,150" fill="#ffd1e5" stroke="#92175c" stroke-width="5"/>
+                <polygon points="245,430 55,500 315,500" fill="#ff75b5" stroke="#92175c" stroke-width="8"/>
+                <line x1="315" y1="210" x2="420" y2="470" stroke="#a51b68" stroke-width="6"/>
+                <line x1="245" y1="430" x2="485" y2="335" stroke="#a51b68" stroke-width="6"/>
+            </svg>
+        </div>
+    </div>
+</section>
+
+<!-- PRESENTACIÓN -->
+<section id="presentation" class="screen">
+    <div class="title">
+        <h2>💗 Conoce PLEGAMI</h2>
+        <p>Mucho más que doblar una hoja.</p>
+    </div>
+    <div class="presentation">
+        <div class="presentation-crane">
+            <svg class="crane" viewBox="0 0 700 560" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="40,120 315,310 245,430" fill="#ff79b5" stroke="#92175c" stroke-width="8"/>
+                <polygon points="40,120 315,310 150,260" fill="#ffb9d9" stroke="#92175c" stroke-width="6"/>
+                <polygon points="245,430 315,210 485,335 420,470" fill="#ff8fc4" stroke="#92175c" stroke-width="8"/>
+                <polygon points="315,210 420,470 485,335" fill="#ffb1d3" stroke="#92175c" stroke-width="6"/>
+                <polygon points="315,210 485,335 605,90 535,350" fill="#ff69ad" stroke="#92175c" stroke-width="8"/>
+                <polygon points="485,335 535,350 605,90" fill="#ff8bbe" stroke="#92175c" stroke-width="6"/>
+                <polygon points="535,350 605,90 665,145 575,205" fill="#ec438d" stroke="#92175c" stroke-width="8"/>
+                <polygon points="605,90 665,145 625,150" fill="#ffd1e5" stroke="#92175c" stroke-width="5"/>
+                <polygon points="245,430 55,500 315,500" fill="#ff75b5" stroke="#92175c" stroke-width="8"/>
+            </svg>
+        </div>
+        <div class="presentation-info">
+            <h3>🪽 Dobla tu imaginación</h3>
+            <p>PLEGAMI es una aplicación educativa creada para aprender origami de una forma sencilla, interactiva y fácil de utilizar, enseñándole a los estudiantes del colegio Brasilia Bosa.</p>
+            <p>Empieza con figuras fáciles, aprende nuevos pliegues y avanza hasta conseguir modelos más desafiantes.</p>
+            <div class="little-boxes">
+                <div class="little-box">🎨 Creatividad</div>
+                <div class="little-box">🧠 Aprendizaje</div>
+                <div class="little-box">✋ Práctica</div>
+                <div class="little-box">⭐ Superación</div>
+            </div>
+            <br>
+            <button class="btn btn-main" onclick="showScreen('tutorials')">🚀 Empezar a aprender</button>
+        </div>
+    </div>
+</section>
+
+<!-- NIVELES -->
+<section id="levels" class="screen">
+    <div class="title">
+        <h2>⭐ Niveles</h2>
+        <p>Comienza desde cero y ve subiendo.</p>
+    </div>
+    <div class="levels">
+        <div class="level" onclick="openTutorial('Avioncito')">
+            <div class="level-number">01</div>
+            <h3>🌱 Inicial</h3>
+            <p>Figuras sencillas para comenzar.</p>
+        </div>
+        <div class="level" onclick="openTutorial('Corazón')">
+            <div class="level-number">02</div>
+            <h3>🌸 Básico</h3>
+            <p>Aprende nuevos pliegues.</p>
+        </div>
+        <div class="level" onclick="openTutorial('Delfín')">
+            <div class="level-number">03</div>
+            <h3>💜 Intermedio</h3>
+            <p>Retos para mejorar tu técnica.</p>
+        </div>
+        <div class="level" onclick="openTutorial('Dragón')">
+            <div class="level-number">04</div>
+            <h3>🔥 Avanzado</h3>
+            <p>Para quienes quieren un gran desafío.</p>
+        </div>
+    </div>
+</section>
+
+<!-- PROYECTO -->
+<section id="project" class="screen">
+    <div class="title">
+        <h2>📚 Proyecto</h2>
+        <p>La idea detrás de PLEGAMI</p>
+    </div>
+    <div class="project">
+        <h3>🎯 Objetivo del proyecto</h3>
+        <p>PLEGAMI busca fortalecer el aprendizaje del origami mediante una aplicación móvil interactiva y fácil de utilizar.</p>
+        <div class="project-list">
+            <div>🩷 Interfaz amigable</div>
+            <div>🎥 Tutoriales paso a paso</div>
+            <div>⭐ Sistema de niveles</div>
+            <div>🎨 Estimulación de la creatividad</div>
+            <div>📱 Diseño pensado para dispositivos móviles</div>
+        </div>
+        <button class="btn btn-main" onclick="showScreen('tutorials')">🎥 Ir a tutoriales</button>
+    </div>
+</section>
+
+<!-- TUTORIALES -->
+<section id="tutorials" class="screen">
+    <div class="title">
+        <h2>🎥 Tutoriales</h2>
+        <p>Toca cualquier figura para entrar.</p>
+    </div>
+    <div class="tutorial-grid">
+        <div class="tutorial" onclick="openTutorial('Avioncito')">
+            <div class="thumbnail">✈️<span class="play">▶️</span></div>
+            <div class="tutorial-info">
+                <h3>Avioncito</h3>
+                <p>⭐ Fácil</p>
+            </div>
+        </div>
+        <div class="tutorial" onclick="openTutorial('Barco')">
+            <div class="thumbnail">⛵<span class="play">▶️</span></div>
+            <div class="tutorial-info">
+                <h3>Barco</h3>
+                <p>⭐ Fácil</p>
+            </div>
+        </div>
+        <div class="tutorial" onclick="openTutorial('Come galletas')">
+            <div class="thumbnail">🍪<span class="play">▶️</span></div>
+            <div class="tutorial-info">
+                <h3>Come galletas</h3>
+                <p>⭐ Fácil</p>
+            </div>
+        </div>
+        <div class="tutorial" onclick="openTutorial('Corazón')">
+            <div class="thumbnail">💗<span class="play">▶️</span></div>
+            <div class="tutorial-info">
+                <h3>Corazón</h3>
+                <p>⭐ Fácil</p>
+            </div>
+        </div>
+        <div class="tutorial" onclick="openTutorial('Delfín')">
+            <div class="thumbnail">🐬<span class="play">▶️</span></div>
+            <div class="tutorial-info">
+                <h3>Delfín</h3>
+                <p>🌟 Intermedio</p>
+            </div>
+        </div>
+        <div class="tutorial" onclick="openTutorial('Dragón')">
+            <div class="thumbnail">🐉<span class="play">▶️</span></div>
+            <div class="tutorial-info">
+                <h3>Dragón</h3>
+                <p>🔥 Avanzado</p>
+            </div>
+        </div>
+        <div class="tutorial" onclick="openTutorial('Pez de papel')">
+            <div class="thumbnail">🐟<span class="play">▶️</span></div>
+            <div class="tutorial-info">
+                <h3>Pez de papel</h3>
+                <p>🌟 Intermedio</p>
+            </div>
+        </div>
+        <div class="tutorial" onclick="openTutorial('Caja de papel')">
+            <div class="thumbnail">📦<span class="play">▶️</span></div>
+            <div class="tutorial-info">
+                <h3>Caja de papel</h3>
+                <p>🌟 Intermedio</p>
+            </div>
+        </div>
+        <div class="tutorial" onclick="openTutorial('Grulla')">
+            <div class="thumbnail">🪽<span class="play">▶️</span></div>
+            <div class="tutorial-info">
+                <h3>Grulla</h3>
+                <p>🔥 Avanzado</p>
+            </div>
+        </div>
+        <div class="tutorial" onclick="openTutorial('Peonza')">
+            <div class="thumbnail">🌀<span class="play">▶️</span></div>
+            <div class="tutorial-info">
+                <h3>Peonza</h3>
+                <p>🌟 Intermedio</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TUTORIAL INDIVIDUAL -->
+<section id="video" class="screen">
+    <div class="video-page">
+        <div class="title">
+            <h2 id="videoTitle">🎥 Tutorial</h2>
+            <p>Aprende paso a paso.</p>
+        </div>
+        <div class="video-container">
+            <video id="tutorialVideo" controls playsinline preload="metadata">
+                Tu navegador no puede reproducir este video.
+            </video>
+            <div id="videoMessage" class="video-message">
+                📹 Selecciona un tutorial para reproducir su video.
+            </div>
+            <button class="btn btn-main" onclick="showScreen('tutorials')">
+                ← Volver a tutoriales
+            </button>
+        </div>
+    </div>
+</section>
+
+</div>
+
+<!-- Enlace al archivo JavaScript externo -->
+<script src="script.js"></script>
+
+</body>
+</html>
