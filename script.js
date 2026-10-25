@@ -1,25 +1,26 @@
 /* ==================================================
-   PANTALLA DE CARGA (SEGURIDAD ANTITRABAS)
+   PANTALLA DE CARGA RÁPIDA
 ================================================== */
 
 function ocultarCarga() {
     const loading = document.getElementById("loading");
     const app = document.getElementById("app");
 
-    if (loading) {
+    if (loading && !loading.classList.contains("hide")) {
         loading.classList.add("hide");
     }
-    if (app) {
+    if (app && !app.classList.contains("show")) {
         app.classList.add("show");
     }
 }
 
+// Ocultar al cargar la ventana
 window.addEventListener("load", function(){
-    setTimeout(ocultarCarga, 400);
+    setTimeout(ocultarCarga, 800);
 });
 
-// Respaldo de seguridad: quita la carga a los 1.0 segundo sí o sí
-setTimeout(ocultarCarga, 1000);
+// Respaldo de seguridad por si el evento load se demora: se oculta a los 1.5 segundos pase lo que pase
+setTimeout(ocultarCarga, 1500);
 
 
 /* ==================================================
@@ -27,36 +28,50 @@ setTimeout(ocultarCarga, 1000);
 ================================================== */
 
 function showScreen(id, button){
-    document.querySelectorAll(".screen").forEach(function(screen){
-        screen.classList.remove("active");
-    });
 
+    /* Ocultamos absolutamente todas las pantallas. */
+    document
+        .querySelectorAll(".screen")
+        .forEach(function(screen){
+            screen.classList.remove("active");
+        });
+
+    /* Mostramos solamente la pantalla seleccionada. */
     const selected = document.getElementById(id);
+
     if(selected){
         selected.classList.add("active");
     }
 
-    document.querySelectorAll(".menu button").forEach(function(btn){
-        btn.classList.remove("selected");
-    });
+    /* Quitamos el seleccionado del menú. */
+    document
+        .querySelectorAll(".menu button")
+        .forEach(function(btn){
+            btn.classList.remove("selected");
+        });
 
+    /* Marcamos el botón pulsado. */
     if(button){
         button.classList.add("selected");
     }
 
+    /* Si se entra desde otro botón, marcamos el botón correspondiente. */
     if(!button){
-        document.querySelectorAll(".menu button").forEach(function(btn){
-            const texto = btn.textContent.toLowerCase();
-            if(
-                (id === "home" && texto.includes("inicio")) ||
-                (id === "presentation" && texto.includes("presentación")) ||
-                (id === "levels" && texto.includes("niveles")) ||
-                (id === "project" && texto.includes("proyecto")) ||
-                (id === "tutorials" && texto.includes("tutoriales"))
-            ){
-                btn.classList.add("selected");
-            }
-        });
+        document
+            .querySelectorAll(".menu button")
+            .forEach(function(btn){
+                const texto = btn.textContent.toLowerCase();
+
+                if(
+                    (id === "home" && texto.includes("inicio")) ||
+                    (id === "presentation" && texto.includes("presentación")) ||
+                    (id === "levels" && texto.includes("niveles")) ||
+                    (id === "project" && texto.includes("proyecto")) ||
+                    (id === "tutorials" && texto.includes("tutoriales"))
+                ){
+                    btn.classList.add("selected");
+                }
+            });
     }
 
     window.scrollTo(0,0);
@@ -64,158 +79,50 @@ function showScreen(id, button){
 
 
 /* ==================================================
-   ABRIR TUTORIAL CON YOUTUBE
+   ABRIR TUTORIAL
 ================================================== */
 
 function openTutorial(name){
 
-    /* 
-      👉 AQUÍ DEBES REEMPLAZAR "TU_ID_DE_YOUTUBE" por el código de tu video.
-      Ejemplo: si tu enlace es https://www.youtube.com/watch?v=dQw4w9WgXcQ, 
-      el ID es "dQw4w9WgXcQ".
-    */
-    const youtubeIds = /* ==================================================
-   PANTALLA DE CARGA (SEGURIDAD ANTITRABAS)
-================================================== */
-
-function ocultarCarga() {
-    const loading = document.getElementById("loading");
-    const app = document.getElementById("app");
-
-    if (loading) {
-        loading.classList.add("hide");
-    }
-    if (app) {
-        app.classList.add("show");
-    }
-}
-
-window.addEventListener("load", function(){
-    setTimeout(ocultarCarga, 400);
-});
-
-// Respaldo de seguridad: quita la carga a los 1.0 segundo sí o sí
-setTimeout(ocultarCarga, 1000);
-
-
-/* ==================================================
-   CAMBIAR DE PANTALLA
-================================================== */
-
-function showScreen(id, button){
-    document.querySelectorAll(".screen").forEach(function(screen){
-        screen.classList.remove("active");
-    });
-
-    const selected = document.getElementById(id);
-    if(selected){
-        selected.classList.add("active");
-    }
-
-    document.querySelectorAll(".menu button").forEach(function(btn){
-        btn.classList.remove("selected");
-    });
-
-    if(button){
-        button.classList.add("selected");
-    }
-
-    if(!button){
-        document.querySelectorAll(".menu button").forEach(function(btn){
-            const texto = btn.textContent.toLowerCase();
-            if(
-                (id === "home" && texto.includes("inicio")) ||
-                (id === "presentation" && texto.includes("presentación")) ||
-                (id === "levels" && texto.includes("niveles")) ||
-                (id === "project" && texto.includes("proyecto")) ||
-                (id === "tutorials" && texto.includes("tutoriales"))
-            ){
-                btn.classList.add("selected");
-            }
-        });
-    }
-
-    window.scrollTo(0,0);
-}
-
-
-/* ==================================================
-   ABRIR TUTORIAL CON YOUTUBE
-================================================== */
-
-function openTutorial(name){
-
-    /* 
-      👉 AQUÍ DEBES REEMPLAZAR "TU_ID_DE_YOUTUBE" por el código de tu video.
-      Ejemplo: si tu enlace es https://www.youtube.com/watch?v=dQw4w9WgXcQ, 
-      el ID es "dQw4w9WgXcQ".
-    */
-    const youtubeIds = {
-        "Avioncito": "gCy1J25Oz1E",
-        "Barco": "cShJZcVOWI8",
-        "Come galletas": "4H6iBhQ4X0E",
-        "Corazón": "WQ84yGbBnw8",
-        "Delfín": "xf5PNZBut_k",
-        "Dragón": "cExOAICzz9w",
-        "Pez de papel": "bH8vKTlf0rE",
-        "Caja de papel": "JUmo2JPW7KE",
-        "Grulla": "aXNSvcDJzuc",
-        "Peonza": "wTS_l_Hw6nA"
+    /* Rutas apuntando a la carpeta "videos/" */
+    const videoFiles = {
+        "Avioncito": "paso del avion.mp4",
+        "Barco": "paso del barco.mp4",
+        "Come galletas": "paso del come galletas.mp4",
+        "Corazón": "paso del corazon.mp4",
+        "Delfín": "paso del delfin.mp4",
+        "Dragón": "dragon de papel.mp4",
+        "Pez de papel": "paso del pez.mp4",
+        "Caja de papel": "paso de la caja de papel.mp4",
+        "Grulla": "paso de la grulla.mp4",
+        "Peonza": "el paso de la peonza.mp4"
     };
-    const iframe = document.getElementById("youtubeIframe");
+
+    const video = document.getElementById("tutorialVideo");
     const message = document.getElementById("videoMessage");
 
     document.getElementById("videoTitle").textContent = "🎥 " + name;
 
-    const videoId = youtubeIds[name];
+    const file = videoFiles[name];
 
-    if(!videoId || videoId.includes("TU_ID")){
-        iframe.src = "";
-        message.textContent = "⚠️ Falta configurar el ID de YouTube para este video.";
+    if(!file){
+        video.removeAttribute("src");
+        video.load();
+
+        message.textContent = "⚠️ No se encontró el video de este tutorial.";
         showScreen("video");
         return;
     }
 
-    /* Carga el video de YouTube en el reproductor integrado */
-    iframe.src = "https://www.youtube.com/embed/" + videoId + "?autoplay=1";
-    message.textContent = "🎬 Tutorial de " + name + ". ¡Disfruta el video!";
+    video.pause();
+    video.src = file;
+    video.load();
 
-    showScreen("video");
-}
+    message.textContent = "🎬 Tutorial de " + name + ". Presiona ▶️ para comenzar.";
 
-
-/* ==================================================
-   MODO OSCURO
-================================================== */
-
-function toggleTheme(){
-    document.body.classList.toggle("dark");
-    const button = document.getElementById("themeButton");
-
-    if(document.body.classList.contains("dark")){
-        button.textContent = "☀️";
-    }else{
-        button.textContent = "🌙";
-    }
-}
-
-    const iframe = document.getElementById("youtubeIframe");
-    const message = document.getElementById("videoMessage");
-
-    document.getElementById("videoTitle").textContent = "🎥 " + name;
-
-    const videoId = youtubeIds[name];
-
-    if(!videoId || videoId.includes("TU_ID")){
-        iframe.src = "";
-        message.textContent = "⚠️ Falta configurar el ID de YouTube para este video.";
-        showScreen("video");
-        return;
-    }
-
-    /* Carga el video de YouTube en el reproductor integrado */
-    iframe.src = "https://www.youtube.com/embed/" + videoId + "?autoplay=1";
-    message.textContent = "🎬 Tutorial de " + name + ". ¡Disfruta el video!";
+    video.onerror = function(){
+        message.textContent = "⚠️ No se pudo cargar el video. Revisa que el archivo exista dentro de la carpeta 'videos' y que tenga exactamente el nombre: " + file;
+    };
 
     showScreen("video");
 }
