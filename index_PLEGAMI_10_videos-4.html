@@ -177,17 +177,6 @@
             <div>🎨 Estimulación de la creatividad</div>
             <div>📱 Diseño pensado para dispositivos móviles</div>
         </div>
-        
-        <!-- CÓDIGO QR PARA DISPOSITIVOS MÓVILES -->
-        <div class="qr-container" style="text-align: center; margin-top: 30px; padding: 20px; background: rgba(255, 255, 255, 0.8); border-radius: 18px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
-            <h3>📱 ¡Escanea y lleva PLEGAMI en tu celular!</h3>
-            <p>Apunta con la cámara de tu teléfono para abrir la aplicación directamente.</p>
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://juantoledocolombia.github.io/plegami/" 
-                 alt="Código QR PLEGAMI" 
-                 style="width: 180px; height: 180px; border-radius: 12px; margin: 15px 0; border: 4px solid #ff82b8; background: #fff; padding: 5px;">
-        </div>
-
-        <br>
         <button class="btn btn-main" onclick="showScreen('tutorials')">🎥 Ir a tutoriales</button>
     </div>
 </section>
@@ -200,70 +189,70 @@
     </div>
     <div class="tutorial-grid">
         <div class="tutorial" onclick="openTutorial('Avioncito')">
-            <div class="thumbnail">✈️<span class="play">▶</span></div>
+            <div class="thumbnail">✈️<span class="play">▶️</span></div>
             <div class="tutorial-info">
                 <h3>Avioncito</h3>
                 <p>⭐ Fácil</p>
             </div>
         </div>
         <div class="tutorial" onclick="openTutorial('Barco')">
-            <div class="thumbnail">⛵<span class="play">▶</span></div>
+            <div class="thumbnail">⛵<span class="play">▶️</span></div>
             <div class="tutorial-info">
                 <h3>Barco</h3>
                 <p>⭐ Fácil</p>
             </div>
         </div>
         <div class="tutorial" onclick="openTutorial('Come galletas')">
-            <div class="thumbnail">🍪<span class="play">▶</span></div>
+            <div class="thumbnail">🍪<span class="play">▶️</span></div>
             <div class="tutorial-info">
                 <h3>Come galletas</h3>
                 <p>⭐ Fácil</p>
             </div>
         </div>
         <div class="tutorial" onclick="openTutorial('Corazón')">
-            <div class="thumbnail">💗<span class="play">▶</span></div>
+            <div class="thumbnail">💗<span class="play">▶️</span></div>
             <div class="tutorial-info">
                 <h3>Corazón</h3>
                 <p>⭐ Fácil</p>
             </div>
         </div>
         <div class="tutorial" onclick="openTutorial('Delfín')">
-            <div class="thumbnail">🐬<span class="play">▶</span></div>
+            <div class="thumbnail">🐬<span class="play">▶️</span></div>
             <div class="tutorial-info">
                 <h3>Delfín</h3>
                 <p>🌟 Intermedio</p>
             </div>
         </div>
         <div class="tutorial" onclick="openTutorial('Dragón')">
-            <div class="thumbnail">🐉<span class="play">▶</span></div>
+            <div class="thumbnail">🐉<span class="play">▶️</span></div>
             <div class="tutorial-info">
                 <h3>Dragón</h3>
                 <p>🔥 Avanzado</p>
             </div>
         </div>
         <div class="tutorial" onclick="openTutorial('Pez de papel')">
-            <div class="thumbnail">🐟<span class="play">▶</span></div>
+            <div class="thumbnail">🐟<span class="play">▶️</span></div>
             <div class="tutorial-info">
                 <h3>Pez de papel</h3>
                 <p>🌟 Intermedio</p>
             </div>
         </div>
         <div class="tutorial" onclick="openTutorial('Caja de papel')">
-            <div class="thumbnail">📦<span class="play">▶</span></div>
+            <div class="thumbnail">📦<span class="play">▶️</span></div>
             <div class="tutorial-info">
                 <h3>Caja de papel</h3>
                 <p>🌟 Intermedio</p>
             </div>
         </div>
         <div class="tutorial" onclick="openTutorial('Grulla')">
-            <div class="thumbnail">🪽<span class="play">▶</span></div>
+            <div class="thumbnail">🪽<span class="play">▶️</span></div>
             <div class="tutorial-info">
                 <h3>Grulla</h3>
                 <p>🔥 Avanzado</p>
             </div>
         </div>
         <div class="tutorial" onclick="openTutorial('Peonza')">
-            <div class="thumbnail">🌀<span class="play">▶</span></div>
+            <div class="thumbnail">🌀<span class="play">▶️</span></div>
             <div class="tutorial-info">
                 <h3>Peonza</h3>
                 <p>🌟 Intermedio</p>
@@ -272,7 +261,7 @@
     </div>
 </section>
 
-<!-- TUTORIAL INDIVIDUAL (CON REPRODUCTOR YOUTUBE) -->
+<!-- TUTORIAL INDIVIDUAL -->
 <section id="video" class="screen">
     <div class="video-page">
         <div class="title">
@@ -280,18 +269,11 @@
             <p>Aprende paso a paso.</p>
         </div>
         <div class="video-container">
-            <div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 18px; background: #17131b;">
-                <iframe id="youtubeIframe" 
-                        src="" 
-                        title="YouTube video player" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen 
-                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
-                </iframe>
-            </div>
+            <video id="tutorialVideo" controls playsinline preload="metadata">
+                Tu navegador no puede reproducir este video.
+            </video>
             <div id="videoMessage" class="video-message">
-                🎬 Sigue el paso a paso del video.
+                📹 Selecciona un tutorial para reproducir su video.
             </div>
             <button class="btn btn-main" onclick="showScreen('tutorials')">
                 ← Volver a tutoriales
